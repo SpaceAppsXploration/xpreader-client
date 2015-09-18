@@ -1,3 +1,3 @@
-# xploration-client
+# xpreader-client
 
-A BackboneJS client for rdfendpoints.appspot.com
+A BackboneJS client for the Articles API at http://hypermedia.projectchronos.eu
