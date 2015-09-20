@@ -1,0 +1,4 @@
+static/libs
+*.css
+node_modules
+
