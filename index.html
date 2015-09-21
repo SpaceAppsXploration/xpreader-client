@@ -19,16 +19,17 @@
       <div class="ui divider"></div>
 
       <ul class="white-links no-bullets">
-        <li><a href="">Home</a></li>
-        <li><a href="">Articles</a></li>
-        <li><a href="">About the Project</a></li>
+        <li><i class="home icon"></i><a href="">Home</a></li>
+        <li><i class="list icon"></i><a href="">Articles</a></li>
+        <li><i class="info circle icon"></i><a href="">About the Project</a></li>
       </ul>
     </div>
     <div class="pusher"></div>
     <div class="main-content">
-      <h1>Testing</h1>
-      <button class="ui button">Test</button>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia non fugit nam, reprehenderit provident distinctio explicabo deleniti cupiditate facilis architecto tempora incidunt aperiam assumenda nemo laudantium natus porro blanditiis amet.</p>
+      <h1>Articles</h1>
+      <div class="articles">
+
+      </div>
     </div>
 
     <!-- Libraries -->
@@ -36,6 +37,17 @@
     <script src="static/libs/underscore/underscore-min.js"></script>
     <script src="static/libs/backbone/backbone-min.js"></script>
     <script src="static/libs/semantic-ui/dist/semantic.min.js"></script>
+    <script src="static/libs/handlebars/handlebars.min.js"></script>
     <script src="static/scripts/script.js"></script>
+
+    <!-- Handlebars templates -->
+
+    <!-- Article -->
+    <script id="article-template" type="text/template">
+      <div class="article ui segment">
+        <h2><a href="{{url}}">{{title}}</a></h2>
+        <p>{{abstract}}</p>
+      </div>
+    </script>
   </body>
 </html>
