@@ -1,3 +1,4 @@
+@import "loader";
 
 /* Styles for the main-layout (sidebar and content) */
 
@@ -42,10 +43,13 @@ ul.no-bullets {
   }
 }
 
+.hidden {
+  display: none;
+}
 
 /* Articles */
 
-.article {
+.article-list-item {
   margin: 10px;
   padding: 10px;
 }
