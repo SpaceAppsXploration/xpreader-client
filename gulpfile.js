@@ -1,6 +1,8 @@
 'use strict';
 
 var gulp = require('gulp'),
+    stylish = require('jshint-stylish'),
+    jshint = require('gulp-jshint'),
     uglify = require('gulp-uglify'),
     plumber = require('gulp-plumber'),
     sass = require('gulp-ruby-sass'),
@@ -17,6 +19,12 @@ var paths = {
     'static/scripts/**/*.js'
   ]
 };
+
+gulp.task('jshint', function() {
+  return gulp.src(paths.scriptFiles)
+    .pipe(jshint())
+    .pipe(jshint.reporter(stylish));
+});
 
 /* Sass Task */
 gulp.task('sass', function() {
@@ -56,4 +64,4 @@ gulp.task('watch', function() {
 
 });
 
-gulp.task('default', ['sass', 'watch']);
+gulp.task('default', ['sass', 'jshint', 'watch']);
