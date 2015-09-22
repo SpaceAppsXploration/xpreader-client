@@ -48,7 +48,7 @@
     },
     about: function() {
       $('.main-content').empty();
-      $('.main-content').append('<h1>About Project Chronos</h1>')
+      $('.main-content').append('<h1>About Project Chronos</h1>');
       // TODO: Add content
     }
   });
