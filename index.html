@@ -1,25 +1,51 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
 
-    <meta charset="utf-8"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
     <title>Project Chronos</title>
 
-    <!-- Google web fonts if needed-->
+    <!-- CSS Libraries -->
+    <link href="static/libs/semantic-ui/dist/semantic.min.css" rel="stylesheet">
 
     <!-- Main CSS file -->
-    <link href="css/style.css" rel="stylesheet"/>
-
-    <script src="scripts/jquery-1.11.js"></script>
-    <script src="scripts/underscore.js"></script>
-    <script src="scripts/backbone.js"></script>
-    <script src="scripts/script.js"></script>
+    <link href="build/styles/base.css" rel="stylesheet">
 
   </head>
   <body>
-    <div>
-	  <!-- Under development -->
+    <div class="ui left vertical inverted violet sidebar visible menu sidebar-menu">
+      <h1>XpReader</h1>
+      <div class="ui divider"></div>
 
+      <ul class="white-links no-bullets">
+        <li><i class="home icon"></i><a href="#home">Home</a></li>
+        <li><i class="list icon"></i><a href="#articles">Articles</a></li>
+        <li><i class="info circle icon"></i><a href="#about">About the Project</a></li>
+      </ul>
     </div>
+    <div class="pusher"></div>
+    <div class="main-content">
+      <h1></h1>
+      <div class="articles">
+
+      </div>
+    </div>
+
+    <!-- Libraries -->
+    <script src="static/libs/jquery/dist/jquery.min.js"></script>
+    <script src="static/libs/underscore/underscore-min.js"></script>
+    <script src="static/libs/backbone/backbone-min.js"></script>
+    <script src="static/libs/semantic-ui/dist/semantic.min.js"></script>
+    <script src="static/libs/handlebars/handlebars.min.js"></script>
+    <script src="static/scripts/script.js"></script>
+
+    <!-- Handlebars templates -->
+
+    <!-- Article -->
+    <script id="article-template" type="text/template">
+        <h2><a href="{{url}}">{{title}}</a></h2>
+        <p>{{abstract}}</p>
+    </script>
   </body>
 </html>
