@@ -1,5 +1,5 @@
-(function() {
-  "use strict";
+define(['jquery', 'backbone', 'handlebars'], function($, Backbone, Handlebars) {
+  'use strict';
 
   // Views
   var ArticleListView = Backbone.View.extend({
@@ -23,5 +23,9 @@
       return this;
     }
   });
-  
-})();
+
+  return {
+    ArticleListView: ArticleListView,
+    ArticleListItemView: ArticleListItemView
+  }
+});
