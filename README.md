@@ -8,6 +8,7 @@ A BackboneJS client for the Articles API at http://hypermedia.projectchronos.eu
 You need to have `npm` installed.
 From the repository's directory:
 
+* Install SASS Ruby gem: `sudo gem install sass`
 * Install node modules: `npm install`
 * Install Bower: `sudo npm -g bower`
 * Install packages via Bower: `bower install`
