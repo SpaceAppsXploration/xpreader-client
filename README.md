@@ -14,8 +14,10 @@ From the repository's directory:
 * Install packages via Bower: `bower install`
 * Install Gulp: `sudo npm install -g gulp`
 * Install packages via Gulp: `gulp`
-* Install http-server: `sudo npm install -g http-server`
 
 To open it locally:
-Go to the root folder and execute the server `http-server .`
+
+* Option 1: Install http-server: `sudo npm install -g http-server`, go to the root folder and execute the server `http-server .`
+* Option 2: If you have Python installed, run from inside the repository's directory `python -m SimpleHTTPServer`
+ 
 Open the address in your browser.

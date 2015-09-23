@@ -21,7 +21,11 @@
       'jquery': '../libs/jquery/dist/jquery.min',
       'underscore': '../libs/underscore/underscore-min',
       'backbone': '../libs/backbone/backbone-min',
+
+      // UI components and styles: http://semantic-ui.com
       'semantic-ui': '../libs/semantic-ui/dist/semantic.min',
+
+      // Require-js plugin to load text files: https://github.com/requirejs/text
       'text': '../libs/text/text',
 
       // Handlebars.js: Minimal Templating on Steroids: http://handlebarsjs.com/
