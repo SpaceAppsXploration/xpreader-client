@@ -10,13 +10,13 @@ define(['backbone', 'views', 'collections'], function(Backbone, views, collectio
     },
     home: function() {
       $('.main-content').empty();
-      $('.main-content').append('<h1>Home Page</h1');
+      $('.main-content').append('<h1>Home Page</h1>');
       // TODO: Add content
     },
     articles: function() {
       $('.main-content').empty();
-      $('.main-content').append('<h1>Articles</h1');
-      $('.main-content').append('<div class="articles"><div class="throbber-loader loader hidden"></div></div');
+      $('.main-content').append('<h1>Articles</h1>');
+      $('.main-content').append('<div class="articles"><div class="throbber-loader loader hidden"></div></div>');
       $('.loader').removeClass('hidden');
       var articles = new collections.Articles();
       articles.fetch(

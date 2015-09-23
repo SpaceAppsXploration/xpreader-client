@@ -1,4 +1,5 @@
 static/libs
 *.css
 node_modules
+.idea
 
