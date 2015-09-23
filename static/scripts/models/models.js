@@ -16,9 +16,11 @@ define(['backbone'], function(Backbone) {
   // back = null > first page
   // back = bookmark > bookmarked page
   // forward = null > last page
+  // page > page counter
   var Paginate = Backbone.Model.extend({
       back: null,
-      forward: null
+      forward: null,
+      page: 1
   });
 
   // requirejs exports

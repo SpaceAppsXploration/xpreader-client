@@ -26,7 +26,7 @@ define(['jquery', 'backbone', 'handlebars'], function($, Backbone, Handlebars) {
     tagName: 'div',
     className: 'ui segment article-list-item',
     render: function() {
-      // define a void template
+      // define a void template from the index's anchor
       var articleTemplateContent = $('#article-template').text();
       // compile the template with Handlebars
       var articleTemplate = Handlebars.compile(articleTemplateContent);
