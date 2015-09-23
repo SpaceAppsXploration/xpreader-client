@@ -1,10 +1,11 @@
 (function() {
 
+  /** REQUIRE-JS config: library for handling modules **/
   require.config({
     name: 'xpreader-client',
     baseUrl: 'static/scripts',
 
-    // Shim used for non AMD compatible libraries.
+    /* Shim used for non AMD compatible libraries. */
     shim: {
       underscore: {
         exports: '_'
@@ -16,14 +17,16 @@
     },
     paths: {
 
-      // Libraries
+      /* Libraries */
       'jquery': '../libs/jquery/dist/jquery.min',
       'underscore': '../libs/underscore/underscore-min',
       'backbone': '../libs/backbone/backbone-min',
       'semantic-ui': '../libs/semantic-ui/dist/semantic.min',
+
+      // Handlebars.js: Minimal Templating on Steroids: http://handlebarsjs.com/
       'handlebars': '../libs/handlebars/handlebars.min',
 
-      // Project files
+      /* Project files */
       'router': 'router',
       'views': 'views/views',
       'models': 'models/models',
