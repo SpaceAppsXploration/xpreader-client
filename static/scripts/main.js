@@ -29,7 +29,7 @@
       'models': 'models/models',
       'collections': 'models/collections'
     }
-  })
+  });
 
   require(['router'], function(router) {
     var articlesRouter = new router.ArticlesRouter();
