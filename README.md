@@ -14,5 +14,8 @@ From the repository's directory:
 * Install packages via Bower: `bower install`
 * Install Gulp: `sudo npm install -g gulp`
 * Install packages via Gulp: `gulp`
+* Install http-server: `sudo npm install -g http-server`
 
-Open `index.html` in your browser. 
+To open it locally:
+Go to the root folder and execute the server `http-server .`
+Open the address in your browser.

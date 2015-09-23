@@ -22,6 +22,7 @@
       'underscore': '../libs/underscore/underscore-min',
       'backbone': '../libs/backbone/backbone-min',
       'semantic-ui': '../libs/semantic-ui/dist/semantic.min',
+      'text': '../libs/text/text',
 
       // Handlebars.js: Minimal Templating on Steroids: http://handlebarsjs.com/
       'handlebars': '../libs/handlebars/handlebars.min',

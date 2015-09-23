@@ -2,4 +2,4 @@ static/libs
 *.css
 node_modules
 .idea
-
+.DS_Store
