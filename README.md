@@ -15,4 +15,9 @@ From the repository's directory:
 * Install Gulp: `sudo npm install -g gulp`
 * Install packages via Gulp: `gulp`
 
-Open `index.html` in your browser. 
+To open it locally:
+
+* Option 1: Install http-server: `sudo npm install -g http-server`, go to the root folder and execute the server `http-server .`
+* Option 2: If you have Python installed, run from inside the repository's directory `python -m SimpleHTTPServer`
+ 
+Open the address in your browser.
