@@ -17,9 +17,11 @@ define([
       articlesTemplate: articlesTemplate,
 
       render: function() {
-        console.log(this.articlesTemplate)
         Handlebars.registerPartial('articlePagination', articlePaginationBoxTemplate);
         var articlesTemplate = Handlebars.compile(this.articlesTemplate);
+
+        this.$el.html(articlesTemplate());
+
         return this;
       }
     });
@@ -62,10 +64,8 @@ define([
     /** TO-DO: Define a simple div with back/forward links for pagination **/
         // see https://github.com/SpaceAppsXploration/xpreader-client/issues/9
     var ArticlePaginationBoxView = Backbone.View.extend({
-      tagName: 'div',
 
       render: function() {
-        console.log(articlePaginationBoxTemplate)
         var paginationTemplate = Handlebars.compile(articlePaginationBoxTemplate);
         this.$el.html(paginationTemplate());
 

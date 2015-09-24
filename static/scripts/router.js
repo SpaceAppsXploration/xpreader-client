@@ -29,8 +29,9 @@ define(['backbone', 'views', 'collections'], function(Backbone, views, collectio
           success: function() {
             // hides the loader element
             $('.loader').addClass('hidden');
+            $('.article-pagination-box').removeClass('hidden');
             // instantiate the big div for articles passing in the collection
-            $('.articles h1').after(new views.ArticleListView({ collection: articles }).render().el);
+            $('.article-list').append(new views.ArticleListView({ collection: articles }).render().el);
           },
           error: function() {
             console.log('Error fetching articles.');
