@@ -20,6 +20,6 @@ define(['backbone', 'models'], function(Backbone, models) {
   // works like module.exports in Nodejs
   return {
     Articles: Articles
-  }
+  };
 
 });

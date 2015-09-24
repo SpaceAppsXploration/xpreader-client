@@ -2,12 +2,30 @@ define([
   'jquery',
   'backbone',
   'handlebars',
-  'text!../../templates/article-list-item.html'
+  'text!../../templates/articles.html',
+  'text!../../templates/article-list-item.html',
+  'text!../../templates/article-pagination-box.html'
   ],
-  function($, Backbone, Handlebars, articleListItemTemplate) {
+  function($, Backbone, Handlebars, articlesTemplate, articleListItemTemplate, articlePaginationBoxTemplate) {
     'use strict';
 
     // Views
+
+    var ArticleView = Backbone.View.extend({
+      tagName: 'div',
+      className: 'articles',
+      articlesTemplate: articlesTemplate,
+
+      render: function() {
+        Handlebars.registerPartial('articlePagination', articlePaginationBoxTemplate);
+        var articlesTemplate = Handlebars.compile(this.articlesTemplate);
+
+        this.$el.html(articlesTemplate());
+
+        return this;
+      }
+    });
+
     var ArticleListView = Backbone.View.extend({
       // The big div that holds all the Articles
       tagName: 'div',
@@ -45,11 +63,13 @@ define([
 
     /** TO-DO: Define a simple div with back/forward links for pagination **/
         // see https://github.com/SpaceAppsXploration/xpreader-client/issues/9
-    var PaginationBox = Backbone.View.extend({
-      tagName: 'div',
+    var ArticlePaginationBoxView = Backbone.View.extend({
 
       render: function() {
+        var paginationTemplate = Handlebars.compile(articlePaginationBoxTemplate);
+        this.$el.html(paginationTemplate());
 
+        return this;
       }
 
     });
@@ -57,7 +77,9 @@ define([
     // requirejs exports
     // works like module.exports in Nodejs
     return {
+      ArticleView: ArticleView,
       ArticleListView: ArticleListView,
-      ArticleListItemView: ArticleListItemView
-    }
+      ArticleListItemView: ArticleListItemView,
+      ArticlePaginationBoxView: ArticlePaginationBoxView
+    };
 });

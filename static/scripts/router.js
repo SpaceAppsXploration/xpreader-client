@@ -17,9 +17,10 @@ define(['backbone', 'views', 'collections'], function(Backbone, views, collectio
     },
 
     articles: function() {
-      $('.main-content').empty();
-      $('.main-content').append('<h1>Articles</h1>');
-      $('.main-content').append('<div class="articles"><div class="throbber-loader loader hidden"></div></div>');
+      $('.main-content')
+        .empty()
+        .html(new views.ArticleView().render().el);
+
       $('.loader').removeClass('hidden');
       var articles = new collections.Articles();
       // async call to JSON API
@@ -28,15 +29,15 @@ define(['backbone', 'views', 'collections'], function(Backbone, views, collectio
           success: function() {
             // hides the loader element
             $('.loader').addClass('hidden');
+            $('.article-pagination-box').removeClass('hidden');
             // instantiate the big div for articles passing in the collection
-            $('.articles').html(new views.ArticleListView({ collection: articles }).render().el);
+            $('.article-list').append(new views.ArticleListView({ collection: articles }).render().el);
           },
           error: function() {
             console.log('Error fetching articles.');
           }
         }
       );
-
     },
 
     about: function() {
@@ -50,6 +51,6 @@ define(['backbone', 'views', 'collections'], function(Backbone, views, collectio
   // works like module.exports in Nodejs
   return {
     ArticlesRouter: ArticlesRouter
-  }
+  };
 
 });

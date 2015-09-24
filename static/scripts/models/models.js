@@ -28,6 +28,6 @@ define(['backbone'], function(Backbone) {
   return {
     Article: Article,
     Paginate: Paginate
-  }
+  };
 
 });

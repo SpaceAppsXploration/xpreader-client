@@ -44,7 +44,7 @@ ul.no-bullets {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 /* Articles */
@@ -52,4 +52,9 @@ ul.no-bullets {
 .article-list-item {
   margin: 10px;
   padding: 10px;
+}
+
+.article-pagination-box {
+  float: right;
+  margin-top: 20px;
 }
