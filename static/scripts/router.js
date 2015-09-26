@@ -1,4 +1,7 @@
-define(['backbone', 'views', 'collections'], function(Backbone, views, collections) {
+define(['backbone',
+        'views',
+        'collections',
+        'loadKeywords'], function(Backbone, views, collections, loadKeywords) {
   'use strict';
 
   /** Router **/
@@ -32,6 +35,8 @@ define(['backbone', 'views', 'collections'], function(Backbone, views, collectio
             $('.article-pagination-box').removeClass('hidden');
             // instantiate the big div for articles passing in the collection
             $('.article-list').append(new views.ArticleListView({ collection: articles }).render().el);
+
+            loadKeywords.loadKeywords();
           },
           error: function() {
             console.log('Error fetching articles.');
