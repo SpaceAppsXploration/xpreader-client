@@ -35,7 +35,8 @@
       'router': 'router',
       'views': 'views/views',
       'models': 'models/models',
-      'collections': 'models/collections'
+      'collections': 'models/collections',
+      'loadKeywords': 'helper/loadKeywords'
     }
   });
 
