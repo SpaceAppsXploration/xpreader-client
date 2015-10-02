@@ -6,11 +6,15 @@ define(['backbone', 'models'], function(Backbone, models) {
 
     // Backbone is pre-configured to sync with a RESTful API.
     // Simply create a new Collection with the url of your resource endpoint
-    url: 'http://hypermedia.projectchronos.eu/articles/v04/',
-
+    url: function() {
+      return this.instanceUrl || 'http://hypermedia.projectchronos.eu/articles/v04/';
+    },
+    initialize: function(props) {
+      this.instanceUrl = props.url;
+    },
     parse: function(response) {
       // parse the 'articles' property in the response
-      return response.articles;
+      return response;
       /** #TO-DO: parse the response to make it store article's keyword by
         fetching also the url found in response.keywords_url **/
     }

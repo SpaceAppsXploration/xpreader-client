@@ -1,7 +1,6 @@
 define(['underscore'], function(_) {
 
   var loadKeywords = function loadKeywords() {
-    console.log('keywords');
     _.each($('.article-list-item-keywords'), function(obj) {
       var keywordsUrl = $(obj).attr('keywords-url');
       $.ajax({

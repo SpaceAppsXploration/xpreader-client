@@ -34,7 +34,7 @@ define([
       // render function, it is called to display the view
       render: function() {
         // underscore library functional call to _(something).each() (like an optimized for loop)
-        _(this.collection.models).each(function(article) {
+        _(this.collection).each(function(article) {
           // model:article is passed to a new instance of ArticleListItemView
           this.$el.append(new ArticleListItemView({ model: article }).render().el);
         }, this);
@@ -55,7 +55,7 @@ define([
         // compile the template with Handlebars
         var articleTemplate = Handlebars.compile(articleListItemTemplate);
         // populate the template with model's attributes
-        this.$el.html(articleTemplate(this.model.attributes));
+        this.$el.html(articleTemplate(this.model));
 
         return this;
       }

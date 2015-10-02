@@ -36,7 +36,8 @@
       'views': 'views/views',
       'models': 'models/models',
       'collections': 'models/collections',
-      'loadKeywords': 'helper/loadKeywords'
+      'loadKeywords': 'helper/loadKeywords',
+      'loadArticles': 'helper/loadArticles'
     }
   });
 
