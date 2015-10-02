@@ -19,7 +19,7 @@
 
 .main-content {
   margin-left: 260px;
-  padding: 1em;
+  padding: 0 1em 50px;
   max-width: 900px;
   width: calc(100%-260px);
 }
@@ -48,6 +48,10 @@ ul.no-bullets {
 }
 
 /* Articles */
+
+.articles {
+  margin-bottom: 20px;
+}
 
 .article-list-item {
   margin: 10px;

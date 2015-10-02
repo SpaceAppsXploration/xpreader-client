@@ -1,15 +1,13 @@
 define(['underscore'], function(_) {
 
   var loadKeywords = function loadKeywords() {
-    console.log('keywords')
     _.each($('.article-list-item-keywords'), function(obj) {
       var keywordsUrl = $(obj).attr('keywords-url');
-
       $.ajax({
         url: keywordsUrl,
         dataType: 'json',
         success: function(json) {
-          if (json.keywords[0]) {
+          if (json.keywords && json.keywords[0]) {
             $(obj).removeClass('hidden').append(json.keywords[0].value);
           }
         },
@@ -18,7 +16,7 @@ define(['underscore'], function(_) {
         }
       });
     });
-  }
+  };
 
   return {
     loadKeywords: loadKeywords

@@ -1,7 +1,8 @@
 define(['backbone',
         'views',
         'collections',
-        'loadKeywords'], function(Backbone, views, collections, loadKeywords) {
+        'loadKeywords',
+        'loadArticles'], function(Backbone, views, collections, loadKeywords, loadArticles) {
   'use strict';
 
   /** Router **/
@@ -20,29 +21,7 @@ define(['backbone',
     },
 
     articles: function() {
-      $('.main-content')
-        .empty()
-        .html(new views.ArticleView().render().el);
-
-      $('.loader').removeClass('hidden');
-      var articles = new collections.Articles();
-      // async call to JSON API
-      articles.fetch(
-        {
-          success: function() {
-            // hides the loader element
-            $('.loader').addClass('hidden');
-            $('.article-pagination-box').removeClass('hidden');
-            // instantiate the big div for articles passing in the collection
-            $('.article-list').append(new views.ArticleListView({ collection: articles }).render().el);
-
-            loadKeywords.loadKeywords();
-          },
-          error: function() {
-            console.log('Error fetching articles.');
-          }
-        }
-      );
+      loadArticles.load();
     },
 
     about: function() {
