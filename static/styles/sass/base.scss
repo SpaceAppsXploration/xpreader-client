@@ -31,6 +31,19 @@ $violet: #6435c9;
 
 /* General Styles */
 
+a {
+  &:active,
+  &:visited,
+  &:link {
+    color: lighten($violet, 15%);
+  }
+
+  &:hover {
+    color: $violet;
+  }
+}
+
+
 .white-links {
   a:active,
   a:visited,
