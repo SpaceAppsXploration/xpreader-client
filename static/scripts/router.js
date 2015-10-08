@@ -1,8 +1,6 @@
 define(['backbone',
         'views',
-        'collections',
-        'loadKeywords',
-        'loadArticles'], function(Backbone, views, collections, loadKeywords, loadArticles) {
+        'collections'], function(Backbone, views, collections) {
   'use strict';
 
   /** Router **/
@@ -15,18 +13,17 @@ define(['backbone',
     },
 
     home: function() {
-      $('.main-content').empty();
-      $('.main-content').append('<h1>Home Page</h1>');
+      $('.main-content').empty().append('<h1>Home Page</h1>');
       // TODO: Add content
     },
 
     articles: function() {
-      loadArticles.load();
+      var articles = new collections.Articles({});
+      articles.loadArticles();
     },
 
     about: function() {
-      $('.main-content').empty();
-      $('.main-content').append('<h1>About Project Chronos</h1>');
+      $('.main-content').empty().append('<h1>About Project Chronos</h1>');
       // TODO: Add content
     }
   });

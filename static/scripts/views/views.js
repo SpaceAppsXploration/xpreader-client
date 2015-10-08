@@ -65,11 +65,19 @@ define([
         // see https://github.com/SpaceAppsXploration/xpreader-client/issues/9
     var ArticlePaginationBoxView = Backbone.View.extend({
 
+      initialize: function(props) {
+        this.collection = props.collection;
+      },
       render: function() {
         var paginationTemplate = Handlebars.compile(articlePaginationBoxTemplate);
         this.$el.html(paginationTemplate());
 
         return this;
+      },
+      events: {
+        'click #articles-next-page': function() {
+          this.collection.loadArticles(this.model.get('next'));
+        }
       }
 
     });
