@@ -1,6 +1,7 @@
 define(['backbone',
         'views',
-        'models'], function(Backbone, views, models) {
+        'models',
+        'semantic-ui'], function(Backbone, views, models, semanticui) {
 
   // see http://backbonejs.org/#Model-Collections
   var Articles = Backbone.Collection.extend({
@@ -43,7 +44,7 @@ define(['backbone',
     loadArticles: function(url) {
       if (url) {
         this.instanceUrl = url;
-        console.log('after: '+ this.instanceUrl)
+        console.log('after: '+ this.instanceUrl);
       }
 
       //Saves current context
@@ -65,9 +66,10 @@ define(['backbone',
             var articlesJson = $this.models[0].attributes.articles;
             var nextLink = $this.models[0].attributes.next;
             $('.article-content').append(new views.ArticleListView({ collection: articlesJson }).render().el);
+            $('select.dropdown').dropdown();
 
             $this.paginator.set({next: nextLink});
-            console.log($this.paginator.get('next'))
+            console.log($this.paginator.get('next'));
 
             var articlePaginationBoxView = new views.ArticlePaginationBoxView({ model: $this.paginator, collection: $this });
             $('.article-list').after(articlePaginationBoxView.render().el);
