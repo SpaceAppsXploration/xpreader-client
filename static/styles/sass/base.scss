@@ -1,5 +1,10 @@
 @import "loader";
 
+/* Variables */
+
+$violet: #6435c9;
+
+
 /* Styles for the main-layout (sidebar and content) */
 
 .sidebar-menu {
@@ -61,7 +66,7 @@ ul.no-bullets {
 }
 
 .highlight {
-  background-color: yellow;
+  background-color: transparentize($violet, 0.8);
 }
 
 .article-list-item {
