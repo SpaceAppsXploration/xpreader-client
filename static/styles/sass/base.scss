@@ -19,7 +19,7 @@
 
 .main-content {
   margin-left: 260px;
-  padding: 0 1em 50px;
+  padding: 20px 1em 50px;
   max-width: 900px;
   width: calc(100%-260px);
 }
@@ -55,6 +55,13 @@ ul.no-bullets {
 
 .article-filters {
   margin-bottom: 20px;
+  label {
+    color: white !important;
+  }
+}
+
+.highlight {
+  background-color: yellow;
 }
 
 .article-list-item {

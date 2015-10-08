@@ -31,6 +31,9 @@
       // Handlebars.js: Minimal Templating on Steroids: http://handlebarsjs.com/
       'handlebars': '../libs/handlebars/handlebars.min',
 
+      // Helper Libraries
+      'stringParser': 'helper/stringParser',
+
       /* Project files */
       'router': 'router',
       'views': 'views/views',

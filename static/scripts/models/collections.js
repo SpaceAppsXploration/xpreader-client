@@ -1,7 +1,8 @@
 define(['backbone',
         'views',
         'models',
-        'semantic-ui'], function(Backbone, views, models, semanticui) {
+        'stringParser',
+        'semantic-ui'], function(Backbone, views, models, stringParser) {
 
   // see http://backbonejs.org/#Model-Collections
   var Articles = Backbone.Collection.extend({
@@ -13,17 +14,20 @@ define(['backbone',
       return this.instanceUrl || 'http://rdfendpoints.appspot.com/articles/v04/';
       //http://hypermedia.projectchronos.eu/articles/v04/
     },
+
     initialize: function(props) {
       this.instanceUrl = props.url;
 
       this.paginator = new models.Paginate({});
     },
+
     parse: function(response) {
       // parse the 'articles' property in the response
       return response;
       /** #TO-DO: parse the response to make it store article's keyword by
         fetching also the url found in response.keywords_url **/
     },
+
     loadKeywords: function () {
       _.each($('.article-list-item-keywords'), function(obj) {
         var keywordsUrl = $(obj).attr('keywords-url');
@@ -41,6 +45,7 @@ define(['backbone',
         });
       });
     },
+
     loadArticles: function(url) {
       if (url) {
         this.instanceUrl = url;
@@ -64,6 +69,13 @@ define(['backbone',
             // instantiate the big div for articles passing in the collection
 
             var articlesJson = $this.models[0].attributes.articles;
+
+            // Converts string urls to clickable urls and highlight words (test)
+            _.each(articlesJson, function(article) {
+              article.abstract = stringParser.convertToUrl(article.abstract);
+              article.abstract = stringParser.highlight(article.abstract, ['planet', 'star'])
+            }, this);
+
             var nextLink = $this.models[0].attributes.next;
             $('.article-content').append(new views.ArticleListView({ collection: articlesJson }).render().el);
             $('select.dropdown').dropdown();
