@@ -19,7 +19,7 @@ define(['backbone'], function(Backbone) {
   // page > page counter
   var Paginate = Backbone.Model.extend({
       back: null,
-      forward: null,
+      next: null,
       page: 1
   });
 

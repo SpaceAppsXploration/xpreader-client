@@ -1,8 +1,51 @@
 <h1>Articles</h1>
 
-<div class="throbber-loader loader hidden"></div>
-<div class="article-list">
+<div class="article-content">
+
+    <div class="article-filters">
+        <div class="ui inverted violet segment">
+            <div class="ui small form">
+                <div class="three fields">
+
+                    <div class="field">
+                        <label>search</label>
+                        <div class="ui left icon input">
+                            <i class="search icon"></i>
+                            <input type="text" placeholder="search">
+                        </div>
+
+                    </div>
+
+                    <div class="field">
+                        <label>type</label>
+                        <select class="ui dropdown">
+                            <option value="article">Article</option>
+                            <option value="facebook">Facebook</option>
+                            <option value="image">Image</option>
+                            <option value="paper">Paper</option>
+                            <option value="tweet">Tweet</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>order by</label>
+                        <select class="ui dropdown">
+                            <option value="recent">Recent</option>
+                            <option value="oldest">Oldest</option>
+                            <option value="most-keywords">Most keywords</option>
+                            <option value="less-keywords">Less keywords</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="throbber-loader loader hidden"></div>
 
 </div>
 
-{{> articlePagination }}

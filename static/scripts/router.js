@@ -1,7 +1,6 @@
 define(['backbone',
         'views',
-        'collections',
-        'loadKeywords'], function(Backbone, views, collections, loadKeywords) {
+        'collections'], function(Backbone, views, collections) {
   'use strict';
 
   /** Router **/
@@ -14,40 +13,17 @@ define(['backbone',
     },
 
     home: function() {
-      $('.main-content').empty();
-      $('.main-content').append('<h1>Home Page</h1>');
+      $('.main-content').empty().append('<h1>Home Page</h1>');
       // TODO: Add content
     },
 
     articles: function() {
-      $('.main-content')
-        .empty()
-        .html(new views.ArticleView().render().el);
-
-      $('.loader').removeClass('hidden');
-      var articles = new collections.Articles();
-      // async call to JSON API
-      articles.fetch(
-        {
-          success: function() {
-            // hides the loader element
-            $('.loader').addClass('hidden');
-            $('.article-pagination-box').removeClass('hidden');
-            // instantiate the big div for articles passing in the collection
-            $('.article-list').append(new views.ArticleListView({ collection: articles }).render().el);
-
-            loadKeywords.loadKeywords();
-          },
-          error: function() {
-            console.log('Error fetching articles.');
-          }
-        }
-      );
+      var articles = new collections.Articles({});
+      articles.loadArticles();
     },
 
     about: function() {
-      $('.main-content').empty();
-      $('.main-content').append('<h1>About Project Chronos</h1>');
+      $('.main-content').empty().append('<h1>About Project Chronos</h1>');
       // TODO: Add content
     }
   });

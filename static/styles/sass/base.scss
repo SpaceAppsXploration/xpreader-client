@@ -1,5 +1,10 @@
 @import "loader";
 
+/* Variables */
+
+$violet: #6435c9;
+
+
 /* Styles for the main-layout (sidebar and content) */
 
 .sidebar-menu {
@@ -19,12 +24,25 @@
 
 .main-content {
   margin-left: 260px;
-  padding: 1em;
+  padding: 20px 1em 50px;
   max-width: 900px;
   width: calc(100%-260px);
 }
 
 /* General Styles */
+
+a {
+  &:active,
+  &:visited,
+  &:link {
+    color: lighten($violet, 15%);
+  }
+
+  &:hover {
+    color: $violet;
+  }
+}
+
 
 .white-links {
   a:active,
@@ -48,6 +66,21 @@ ul.no-bullets {
 }
 
 /* Articles */
+
+.articles {
+  margin-bottom: 20px;
+}
+
+.article-filters {
+  margin-bottom: 20px;
+  label {
+    color: white !important;
+  }
+}
+
+.highlight {
+  background-color: transparentize($violet, 0.8);
+}
 
 .article-list-item {
   margin: 10px;
