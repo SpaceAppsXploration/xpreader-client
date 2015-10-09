@@ -1,3 +1,5 @@
+{{!-- {{['feed', 'tweet', 'media', 'link', 'pdf', 'paper', 'fb', 'movie']}} --}}
+
 {{#if_eq type_of 'tweet'}}
 
 <blockquote class="twitter-tweet" data-link-color="#9271da" lang="es">
@@ -6,11 +8,16 @@
 
 {{else}}
 
-<h2><a href="{{url}}">{{title}}</a></h2>
-<p>{{{abstract}}}</p>
+  {{#if_eq type_of 'fb'}}
+  <div class="fb-post" data-href="{{url}}" data-width="500"></div>
+  {{else}}
 
-<div class="article-list-item-keywords hidden" keywords-url="{{keywords_url}}">
-  <strong>Keywords</strong>:
-</div>
+  <h2><a href="{{url}}">{{title}}</a></h2>
+  <p>{{{abstract}}}</p>
+
+  <div class="article-list-item-keywords hidden" keywords-url="{{keywords_url}}">
+    <strong>Keywords</strong>:
+  </div>
+  {{/if_eq}}
 
 {{/if_eq}}

@@ -3,7 +3,8 @@ define(['backbone',
         'models',
         'stringParser',
         'semantic-ui',
-        'twitter'], function(Backbone, views, models, stringParser) {
+        'twitter',
+        'fb'], function(Backbone, views, models, stringParser) {
 
   // see http://backbonejs.org/#Model-Collections
   var Articles = Backbone.Collection.extend({
@@ -66,10 +67,12 @@ define(['backbone',
             // hides the loader element
             $('.loader').addClass('hidden');
             // instantiate the big div for articles passing in the collection
+
             var articlesJson = $this.models[0].attributes.articles;
 
             // Converts string urls to clickable urls and highlight words (test)
             _.each(articlesJson, function(article) {
+
               article.abstract = stringParser.convertToUrl(article.abstract);
               article.abstract = stringParser.highlight(article.abstract, ['planet', 'star']);
             }, this);
@@ -85,6 +88,7 @@ define(['backbone',
 
             $this.loadKeywords();
             twttr.widgets.load();
+            window.fbAsyncInit();
           },
           error: function() {
             console.log('Error fetching articles.');

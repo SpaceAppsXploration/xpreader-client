@@ -13,6 +13,9 @@
       backbone: {
         deps: ['underscore', 'jquery'],
         exports: 'Backbone'
+      },
+      facebook: {
+        exports: 'FB'
       }
     },
     paths: {
@@ -35,6 +38,8 @@
       'stringParser': 'helper/stringParser',
       'handlebarsHelper': 'helper/handlebarsHelper',
       'twitter': 'helper/twitter',
+      'facebook': '//connect.facebook.net/en_US/sdk',
+      'fb': 'helper/fb',
 
       /* Project files */
       'router': 'router',
