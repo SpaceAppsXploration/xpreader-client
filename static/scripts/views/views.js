@@ -4,7 +4,8 @@ define([
   'handlebars',
   'text!../../templates/articles.html',
   'text!../../templates/article-list-item.html',
-  'text!../../templates/article-pagination-box.html'
+  'text!../../templates/article-pagination-box.html',
+  'handlebarsHelper'
   ],
   function($, Backbone, Handlebars, articlesTemplate, articleListItemTemplate, articlePaginationBoxTemplate) {
     'use strict';

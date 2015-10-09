@@ -1,6 +1,16 @@
+{{#if_eq type_of 'tweet'}}
+
+<blockquote class="twitter-tweet" data-link-color="#9271da" lang="es">
+  <a href="{{url}}"></a>
+</blockquote>
+
+{{else}}
+
 <h2><a href="{{url}}">{{title}}</a></h2>
 <p>{{{abstract}}}</p>
 
 <div class="article-list-item-keywords hidden" keywords-url="{{keywords_url}}">
   <strong>Keywords</strong>:
 </div>
+
+{{/if_eq}}

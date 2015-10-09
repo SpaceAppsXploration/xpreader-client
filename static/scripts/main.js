@@ -33,6 +33,8 @@
 
       // Helper Libraries
       'stringParser': 'helper/stringParser',
+      'handlebarsHelper': 'helper/handlebarsHelper',
+      'twitter': 'helper/twitter',
 
       /* Project files */
       'router': 'router',
@@ -45,7 +47,7 @@
   require(['router'], function(router) {
     var articlesRouter = new router.ArticlesRouter();
     Backbone.history.start();
-    articlesRouter.navigate('home', { trigger: true });
+    //articlesRouter.navigate('home', { trigger: true });
   });
 
 }());

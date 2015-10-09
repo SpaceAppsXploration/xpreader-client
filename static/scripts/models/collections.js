@@ -2,7 +2,8 @@ define(['backbone',
         'views',
         'models',
         'stringParser',
-        'semantic-ui'], function(Backbone, views, models, stringParser) {
+        'semantic-ui',
+        'twitter'], function(Backbone, views, models, stringParser) {
 
   // see http://backbonejs.org/#Model-Collections
   var Articles = Backbone.Collection.extend({
@@ -11,7 +12,7 @@ define(['backbone',
     // Backbone is pre-configured to sync with a RESTful API.
     // Simply create a new Collection with the url of your resource endpoint
     url: function() {
-      return 'http://hypermedia.projectchronos.eu/articles/v04/';
+      return this.instanceUrl || 'http://hypermedia.projectchronos.eu/articles/v04/';
     },
 
     initialize: function(props) {
@@ -48,7 +49,6 @@ define(['backbone',
     loadArticles: function(url) {
       if (url) {
         this.instanceUrl = url;
-        console.log('after: '+ this.instanceUrl);
       }
 
       //Saves current context
@@ -60,19 +60,18 @@ define(['backbone',
 
       $('.loader').removeClass('hidden');
       // async call to JSON API
-      this.fetch(
+      $this.fetch(
         {
           success: function() {
             // hides the loader element
             $('.loader').addClass('hidden');
             // instantiate the big div for articles passing in the collection
-
             var articlesJson = $this.models[0].attributes.articles;
 
             // Converts string urls to clickable urls and highlight words (test)
             _.each(articlesJson, function(article) {
               article.abstract = stringParser.convertToUrl(article.abstract);
-              article.abstract = stringParser.highlight(article.abstract, ['planet', 'star'])
+              article.abstract = stringParser.highlight(article.abstract, ['planet', 'star']);
             }, this);
 
             var nextLink = $this.models[0].attributes.next;
@@ -80,12 +79,12 @@ define(['backbone',
             $('select.dropdown').dropdown();
 
             $this.paginator.set({next: nextLink});
-            console.log($this.paginator.get('next'));
 
             var articlePaginationBoxView = new views.ArticlePaginationBoxView({ model: $this.paginator, collection: $this });
             $('.article-list').after(articlePaginationBoxView.render().el);
 
-            //$this.loadKeywords();
+            $this.loadKeywords();
+            twttr.widgets.load();
           },
           error: function() {
             console.log('Error fetching articles.');
@@ -93,7 +92,6 @@ define(['backbone',
         }
       );
 
-      //$('#articles-next-page').on('click', load);
     },
     paginator: null
   });
