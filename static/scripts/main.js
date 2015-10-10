@@ -13,6 +13,9 @@
       backbone: {
         deps: ['underscore', 'jquery'],
         exports: 'Backbone'
+      },
+      facebook: {
+        exports: 'FB'
       }
     },
     paths: {
@@ -33,6 +36,10 @@
 
       // Helper Libraries
       'stringParser': 'helper/stringParser',
+      'handlebarsHelper': 'helper/handlebarsHelper',
+      'twitter': 'helper/twitter',
+      'facebook': '//connect.facebook.net/en_US/sdk',
+      'fb': 'helper/fb',
 
       /* Project files */
       'router': 'router',
@@ -45,7 +52,7 @@
   require(['router'], function(router) {
     var articlesRouter = new router.ArticlesRouter();
     Backbone.history.start();
-    articlesRouter.navigate('home', { trigger: true });
+    //articlesRouter.navigate('home', { trigger: true });
   });
 
 }());
