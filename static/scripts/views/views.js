@@ -14,7 +14,7 @@ define([
 
     var ArticleView = Backbone.View.extend({
       tagName: 'div',
-      className: 'articles',
+      className: 'articles animated fadeIn',
       articlesTemplate: articlesTemplate,
 
       render: function() {
