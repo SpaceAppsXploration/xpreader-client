@@ -24,12 +24,15 @@ define(['backbone',
 
     parse: function(response) {
       // parse the 'articles' property in the response
-      response = _.filter (response, function(res){
+      response.articles = _.filter (response.articles, function(res){
         return res.title !== ''
       });
       return response;
-      /** #TO-DO: parse the response to make it store article's keyword by
-        fetching also the url found in response.keywords_url **/
+
+      /* TODO: Check if all articles in the response are filtered leaving no articles in the response.
+
+      /* TODO: parse the response to make it store article's keyword by
+        fetching also the url found in response.keywords_url */
     },
 
     loadKeywords: function () {

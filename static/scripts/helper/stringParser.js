@@ -3,7 +3,7 @@ define(['underscore'], function(_) {
 
     var convertToUrl = function(text) {
         /* Receives a text string and replaces urls with clickable urls. */
-        if (text !== '') {
+        if (text) {
             var expression = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/i;
             return text.replace(expression, "<a href='$1'>$1</a>");
         }
@@ -13,7 +13,7 @@ define(['underscore'], function(_) {
     var highlight = function(text, words) {
         /* Receives a text string and an array of words to be highlighted */
 
-        if (text !== '') {
+        if (text) {
             _.each(words, function (word) {
                 var expression = new RegExp('(' + word + ')', 'i');
 
