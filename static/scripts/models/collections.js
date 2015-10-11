@@ -24,6 +24,9 @@ define(['backbone',
 
     parse: function(response) {
       // parse the 'articles' property in the response
+      response = _.filter (response, function(res){
+        return res.title !== ''
+      });
       return response;
       /** #TO-DO: parse the response to make it store article's keyword by
         fetching also the url found in response.keywords_url **/
