@@ -19,8 +19,8 @@ define(['underscore'], function(_) {
 
                 text = text.replace(expression, "<span class='highlight'>$1</span>");
 
-                return text;
             });
+            return text;
         }
 
         return '';

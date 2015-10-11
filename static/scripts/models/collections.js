@@ -80,6 +80,8 @@ define(['backbone',
             _.each(articlesJson, function(article) {
 
               article.abstract = stringParser.convertToUrl(article.abstract);
+
+              // TODO: change this to highlight keywords in the text.
               article.abstract = stringParser.highlight(article.abstract, ['planet', 'star']);
             }, this);
 
