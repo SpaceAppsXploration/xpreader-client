@@ -2,12 +2,14 @@ define([
   'jquery',
   'backbone',
   'handlebars',
-  'text!../../templates/articles.html',
+  'models',
+  'text!../../templates/article-main.html',
   'text!../../templates/article-list-item.html',
   'text!../../templates/article-pagination-box.html',
+  'text!../../templates/article-filters.html',
   'handlebarsHelper'
   ],
-  function($, Backbone, Handlebars, articlesTemplate, articleListItemTemplate, articlePaginationBoxTemplate) {
+  function($, Backbone, Handlebars, models, articlesTemplate, articleListItemTemplate, articlePaginationBoxTemplate, articleFiltersTemplate) {
     'use strict';
 
     // Views
@@ -27,6 +29,33 @@ define([
       }
     });
 
+    var ArticleFilterView = Backbone.View.extend({
+      tagName: 'div',
+      className: 'article-filters',
+      articleFiltersTemplate: articleFiltersTemplate,
+
+      render: function() {
+        var articleFilterTemplate = Handlebars.compile(articleFiltersTemplate);
+        this.$el.html(articleFilterTemplate(this.model));
+
+        return this;
+      },
+
+      events: {
+        'click #filter-go': 'loadArticles'
+      },
+
+      updateModel: function() {
+        this.model.set('type_of', this.$el.find('#type-select').val());
+        this.model.set('sort', this.$el.find('#sort-select').val());
+      },
+
+      loadArticles: function() {
+        this.updateModel();
+        this.collection.loadArticles(this.model.buildUrl());
+      }
+    });
+
     var ArticleListView = Backbone.View.extend({
       // The big div that holds all the Articles
       tagName: 'div',
@@ -37,7 +66,10 @@ define([
         // underscore library functional call to _(something).each() (like an optimized for loop)
         _(this.collection).each(function(article) {
           // model:article is passed to a new instance of ArticleListItemView
-          this.$el.append(new ArticleListItemView({ model: article }).render().el);
+
+          var articleModel = new models.Article(article);
+
+          this.$el.append(new ArticleListItemView({ model: articleModel }).render().el);
         }, this);
 
         return this;
@@ -50,13 +82,19 @@ define([
       // The smaller divs that hold the single Article
       tagName: 'div',
       className: 'ui segment article-list-item',
+
+      initialize: function() {
+        this.model.on('change', this.render, this);
+      },
+
       render: function() {
         // define a void template from the index's anchor
         // var articleTemplateContent = $('#article-template').text();
         // compile the template with Handlebars
-        var articleTemplate = Handlebars.compile(articleListItemTemplate);
+        var articleListItem = Handlebars.compile(articleListItemTemplate);
         // populate the template with model's attributes
-        this.$el.html(articleTemplate(this.model));
+
+        this.$el.html(articleListItem(this.model.toJSON()));
 
         return this;
       }
@@ -66,15 +104,16 @@ define([
         // see https://github.com/SpaceAppsXploration/xpreader-client/issues/9
     var ArticlePaginationBoxView = Backbone.View.extend({
 
-      initialize: function(props) {
-        this.collection = props.collection;
-      },
+      tagName: 'div',
+      className: 'article-pagination-box',
+
       render: function() {
         var paginationTemplate = Handlebars.compile(articlePaginationBoxTemplate);
         this.$el.html(paginationTemplate());
 
         return this;
       },
+
       events: {
         'click #articles-next-page': function() {
           this.collection.loadArticles(this.model.get('next'));
@@ -87,6 +126,7 @@ define([
     // works like module.exports in Nodejs
     return {
       ArticleView: ArticleView,
+      ArticleFilterView: ArticleFilterView,
       ArticleListView: ArticleListView,
       ArticleListItemView: ArticleListItemView,
       ArticlePaginationBoxView: ArticlePaginationBoxView

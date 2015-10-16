@@ -19,13 +19,15 @@ define(['backbone',
     initialize: function(props) {
       this.instanceUrl = props.url;
 
-      this.paginator = new models.Paginate({});
+      this.filter = props.filter;
+
+      this.paginator = props.paginator;
     },
 
     parse: function(response) {
       // parse the 'articles' property in the response
       response.articles = _.filter (response.articles, function(res){
-        return res.title !== ''
+        return res.title !== '';
       });
       return response;
 
@@ -33,24 +35,6 @@ define(['backbone',
 
       /* TODO: parse the response to make it store article's keyword by
         fetching also the url found in response.keywords_url */
-    },
-
-    loadKeywords: function () {
-      _.each($('.article-list-item-keywords'), function(obj) {
-        var keywordsUrl = $(obj).attr('keywords-url');
-        $.ajax({
-          url: keywordsUrl,
-          dataType: 'json',
-          success: function(json) {
-            if (json.keywords && json.keywords[0]) {
-              $(obj).removeClass('hidden').append(json.keywords[0].value);
-            }
-          },
-          error: function() {
-            console.log('Error retrieving keywords for ' + keywordsUrl);
-          }
-        });
-      });
     },
 
     loadArticles: function(url) {
@@ -61,40 +45,26 @@ define(['backbone',
       //Saves current context
       var $this = this;
 
-      $('.main-content')
-          .empty()
-          .html(new views.ArticleView().render().el);
+      $('.article-list').remove();
 
       $('.loader').removeClass('hidden');
       // async call to JSON API
       $this.fetch(
         {
-          success: function() {
+          success: function(collection, response) {
             // hides the loader element
             $('.loader').addClass('hidden');
             // instantiate the big div for articles passing in the collection
+            if (response.articles.length) {
+              $('.article-pagination-box').removeClass('hidden').before(new views.ArticleListView({ collection: response.articles }).render().el);
+            } else {
+              $('.article-pagination-box').addClass('hidden').before('<div class="article-list"><p>No content found.</p></div>');
+            }
 
-            var articlesJson = $this.models[0].attributes.articles;
-
-            // Converts string urls to clickable urls and highlight words (test)
-            _.each(articlesJson, function(article) {
-
-              article.abstract = stringParser.convertToUrl(article.abstract);
-
-              // TODO: change this to highlight keywords in the text.
-              article.abstract = stringParser.highlight(article.abstract, ['planet', 'star']);
-            }, this);
-
-            var nextLink = $this.models[0].attributes.next;
-            $('.article-content').append(new views.ArticleListView({ collection: articlesJson }).render().el);
             $('select.dropdown').dropdown();
 
-            $this.paginator.set({next: nextLink});
+            $this.paginator.set('next', response.next);
 
-            var articlePaginationBoxView = new views.ArticlePaginationBoxView({ model: $this.paginator, collection: $this });
-            $('.article-list').after(articlePaginationBoxView.render().el);
-
-            $this.loadKeywords();
             twttr.widgets.load();
             window.fbAsyncInit();
           },
@@ -104,8 +74,7 @@ define(['backbone',
         }
       );
 
-    },
-    paginator: null
+    }
   });
 
   // requirejs exports

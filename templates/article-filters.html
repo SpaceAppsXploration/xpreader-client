@@ -1,0 +1,34 @@
+<div class="ui inverted violet segment">
+  <div class="ui small form">
+    <div class="three fields">
+      <div class="field">
+        <label>search</label>
+        <div class="ui left icon input">
+          <i class="search icon"></i>
+          <input type="text" placeholder="search" id="search-text">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>type</label>
+        <select class="ui dropdown" id="type-select">
+          {{#each typeOptions}}
+          <option value="{{this.[0]}}">{{this.[1]}}</option>
+          {{/each}}
+        </select>
+      </div>
+
+      <div class="field">
+        <label>order by</label>
+        <select class="ui dropdown" id="sort-select">
+          {{#each sortOptions}}
+          <option value="{{this.[0]}}">{{this.[1]}}</option>
+          {{/each}}
+        </select>
+      </div>
+
+      <div class="ui small button" id="filter-go">Go</div>
+
+    </div>
+  </div>
+</div>
