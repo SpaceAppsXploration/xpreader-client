@@ -1,6 +1,7 @@
 define(['backbone',
         'views',
-        'collections'], function(Backbone, views, collections) {
+        'models',
+        'collections'], function(Backbone, views, models, collections) {
   'use strict';
 
   /** Router **/
@@ -18,7 +19,18 @@ define(['backbone',
     },
 
     articles: function() {
-      var articles = new collections.Articles({});
+
+      var articleFilter = new models.ArticleFilter();
+
+      // Adds the basic structure to the page.
+      $('.main-content')
+        .empty()
+        .html(new views.ArticleView().render().el)
+        .find('.article-content')
+        .prepend(new views.ArticleFilterView({ model: articleFilter }).render().el);
+
+      var articles = new collections.Articles({ filter: articleFilter });
+
       articles.loadArticles();
     },
 
