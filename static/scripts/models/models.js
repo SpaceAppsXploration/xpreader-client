@@ -21,11 +21,12 @@ define(['backbone', 'views'], function(Backbone, views) {
 
       if (this.get('keywords_url')) {
         $.ajax({
+          context: this,
           url: this.get('keywords_url'),
           dataType: 'json',
           success: function(json) {
             if (json.keywords && json.keywords[0]) {
-              this.keywords = json.keywords[0].value.split(" ");
+              this.set('keywords', json.keywords[0].value);
             }
           },
           error: function() {
@@ -33,8 +34,6 @@ define(['backbone', 'views'], function(Backbone, views) {
           }
         });
       }
-
-
     },
 
     updateAbstract: function() {

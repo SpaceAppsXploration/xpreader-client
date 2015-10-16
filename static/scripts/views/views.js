@@ -82,6 +82,11 @@ define([
       // The smaller divs that hold the single Article
       tagName: 'div',
       className: 'ui segment article-list-item',
+
+      initialize: function() {
+        this.model.on('change', this.render, this);
+      },
+
       render: function() {
         // define a void template from the index's anchor
         // var articleTemplateContent = $('#article-template').text();
