@@ -27,7 +27,7 @@ define(['backbone',
     parse: function(response) {
       // parse the 'articles' property in the response
       response.articles = _.filter (response.articles, function(res){
-        return res.title !== ''
+        return res.title !== '';
       });
       return response;
 
@@ -55,7 +55,12 @@ define(['backbone',
             // hides the loader element
             $('.loader').addClass('hidden');
             // instantiate the big div for articles passing in the collection
-            $('.article-pagination-box').before(new views.ArticleListView({ collection: response.articles }).render().el);
+            if (response.articles.length) {
+              $('.article-pagination-box').removeClass('hidden').before(new views.ArticleListView({ collection: response.articles }).render().el);
+            } else {
+              $('.article-pagination-box').addClass('hidden').before('<div class="article-list"><p>No content found.</p></div>');
+            }
+
             $('select.dropdown').dropdown();
 
             $this.paginator.set('next', response.next);

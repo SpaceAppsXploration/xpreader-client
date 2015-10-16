@@ -29,7 +29,7 @@ define(['backbone',
         .empty()
         .html(new views.ArticleView().render().el)
         .find('.article-content')
-        .prepend(new views.ArticleFilterView({ model: articleFilter }).render().el)
+        .prepend(new views.ArticleFilterView({ model: articleFilter, collection: articles }).render().el)
         .append(new views.ArticlePaginationBoxView({ model: articlePaginate, collection: articles }).render().el);
 
       articles.loadArticles();

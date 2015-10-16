@@ -52,7 +52,7 @@ define([
 
       loadArticles: function() {
         this.updateModel();
-        // TODO: implement logic to fetch articles in the collection
+        this.collection.loadArticles(this.model.buildUrl());
       }
     });
 
@@ -98,6 +98,9 @@ define([
     /** TO-DO: Define a simple div with back/forward links for pagination **/
         // see https://github.com/SpaceAppsXploration/xpreader-client/issues/9
     var ArticlePaginationBoxView = Backbone.View.extend({
+
+      tagName: 'div',
+      className: 'article-pagination-box',
 
       render: function() {
         var paginationTemplate = Handlebars.compile(articlePaginationBoxTemplate);

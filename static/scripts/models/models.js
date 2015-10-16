@@ -89,6 +89,7 @@ define(['backbone', 'views'], function(Backbone, views) {
   var ArticleFilter = Backbone.Model.extend({
     defaults: {
       base_url: 'http://hypermedia.projectchronos.eu/articles/v04/',
+      base_url_filter: 'http://hypermedia.projectchronos.eu/articles/v04/by',
       type_of: 'tweet',
       query: '',
       sort: ''
@@ -125,12 +126,15 @@ define(['backbone', 'views'], function(Backbone, views) {
     buildUrl: function() {
       var params = {};
       if (this.get('type_of') != 'all') {
-        params.type_of = this.get('type_of');
+        params.type = this.get('type_of');
+        return this.get('base_url_filter') + '?' + $.param(params);
+      } else {
+        return this.get('base_url');
       }
 
       // TODO: implement query and sort params
-      return this.get('base_url') + '?' + $.param(params);
-    },
+
+    }
 
   });
 
