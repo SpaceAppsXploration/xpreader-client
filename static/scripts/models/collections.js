@@ -21,7 +21,7 @@ define(['backbone',
 
       this.filter = props.filter;
 
-      this.paginator = new models.Paginate({});
+      this.paginator = props.paginator;
     },
 
     parse: function(response) {
@@ -55,12 +55,10 @@ define(['backbone',
             // hides the loader element
             $('.loader').addClass('hidden');
             // instantiate the big div for articles passing in the collection
-            $('.article-content').append(new views.ArticleListView({ collection: response.articles }).render().el);
+            $('.article-pagination-box').before(new views.ArticleListView({ collection: response.articles }).render().el);
             $('select.dropdown').dropdown();
 
-            //$this.paginator.set({next: response.next});
-            //var articlePaginationBoxView = new views.ArticlePaginationBoxView({ model: $this.paginator, collection: $this });
-            //$('.article-list').after(articlePaginationBoxView.render().el);
+            $this.paginator.set('next', response.next);
 
             twttr.widgets.load();
             window.fbAsyncInit();
@@ -71,8 +69,7 @@ define(['backbone',
         }
       );
 
-    },
-    paginator: null
+    }
   });
 
   // requirejs exports

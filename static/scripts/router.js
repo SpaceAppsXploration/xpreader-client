@@ -21,15 +21,16 @@ define(['backbone',
     articles: function() {
 
       var articleFilter = new models.ArticleFilter();
+      var articlePaginate = new models.Paginate();
+      var articles = new collections.Articles({ filter: articleFilter, paginator: articlePaginate });
 
       // Adds the basic structure to the page.
       $('.main-content')
         .empty()
         .html(new views.ArticleView().render().el)
         .find('.article-content')
-        .prepend(new views.ArticleFilterView({ model: articleFilter }).render().el);
-
-      var articles = new collections.Articles({ filter: articleFilter });
+        .prepend(new views.ArticleFilterView({ model: articleFilter }).render().el)
+        .append(new views.ArticlePaginationBoxView({ model: articlePaginate, collection: articles }).render().el);
 
       articles.loadArticles();
     },
