@@ -1,7 +1,6 @@
 define(['backbone',
         'views',
         'models',
-        'stringParser',
         'semantic-ui',
         'twitter',
         'fb'], function(Backbone, views, models, stringParser) {

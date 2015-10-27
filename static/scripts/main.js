@@ -35,7 +35,6 @@
       'handlebars': '../libs/handlebars/handlebars.min',
 
       // Helper Libraries
-      'stringParser': 'helper/stringParser',
       'handlebarsHelper': 'helper/handlebarsHelper',
       'twitter': 'helper/twitter',
       'facebook': '//connect.facebook.net/en_US/sdk',
