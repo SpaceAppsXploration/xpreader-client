@@ -1,7 +1,6 @@
 define(['backbone',
         'views',
         'models',
-        'stringParser',
         'semantic-ui',
         'twitter',
         'fb'], function(Backbone, views, models, stringParser) {
@@ -46,6 +45,14 @@ define(['backbone',
       var $this = this;
 
       $('.article-list').remove();
+
+      $(document).ajaxStop(function(){
+        if ($('.fb-post').not("[fb-xfbml-state*='rendered']")) {
+          window.fbAsyncInit();
+        }
+
+        twttr.widgets.load();
+      });
 
       $('.loader').removeClass('hidden');
       // async call to JSON API

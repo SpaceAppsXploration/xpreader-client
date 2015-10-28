@@ -83,7 +83,8 @@ define([
       tagName: 'div',
       className: 'ui segment article-list-item',
 
-      initialize: function() {
+      initialize: function(props) {
+        this.model = props.model;
         this.model.on('change', this.render, this);
       },
 
