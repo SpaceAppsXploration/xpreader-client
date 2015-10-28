@@ -46,6 +46,14 @@ define(['backbone',
 
       $('.article-list').remove();
 
+      $(document).ajaxStop(function(){
+        if ($('.fb-post').not("[fb-xfbml-state*='rendered']")) {
+          window.fbAsyncInit();
+        }
+
+        twttr.widgets.load();
+      });
+
       $('.loader').removeClass('hidden');
       // async call to JSON API
       $this.fetch(
