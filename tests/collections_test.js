@@ -26,7 +26,7 @@ define(['backbone',
 		});
 
     it('Should have a URL set', function() {
-      this.articles.url().should.equal('http://hypermedia.projectchronos.eu/articles/v04/');
+      this.articles.url().should.equal('http://semantics.projectchronos.eu/');
     });
 
 	});
