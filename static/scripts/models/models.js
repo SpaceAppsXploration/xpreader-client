@@ -88,7 +88,7 @@ define(['backbone', 'views'], function(Backbone, views) {
   var ArticleFilter = Backbone.Model.extend({
     defaults: {
       base_url: 'http://semantics.projectchronos.eu/',
-      base_url_filter: 'http://semantics.projectchronos.eu/by',
+      base_url_filter: 'http://semantics.projectchronos.eu/filterby',
       type_of: 'tweet',
       query: '',
       sort: ''
