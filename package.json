@@ -23,6 +23,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-ruby-sass": "^2.0.3",
     "gulp-uglify": "^1.4.1",
+<<<<<<< HEAD
     "jshint-stylish": "latest",
     "gulp-jshint": "latest",
     "chai": "^3.3.0",
@@ -30,5 +31,9 @@
     "sinon": "^1.17.1",
     "sinon-chai": "^2.8.0",
     "testem": "latest"
+=======
+    "gulp-jshint": "^1.12.0",
+    "jshint-stylish": "^2.0.1"
+>>>>>>> 1d84eb35c62d42e1724efeeb5953f5ba08f727b0
   }
 }
