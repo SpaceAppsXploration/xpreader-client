@@ -1,8 +1,5 @@
 
-/** REQUIRE-JS config: library for handling modules **/
-// require(['../static/scripts/main'], function() {
-// console.log('lets bring in main config!');
-
+/** REQUIRE-JS config: library for handling modules in test environment **/
 require.config({
   name: 'xpreader-client',
   baseUrl: '/',
@@ -46,28 +43,15 @@ require.config({
     'router': '../static/scripts/router',
     'views': '../static/scripts/views/views',
     'models': '../static/scripts/models/models',
-    'collections': '../static/scripts/models/collections'
+    'collections': '../static/scripts/models/collections',
+
+    /* testing libs */
+    'sinon': 'node_modules/sinon/lib/sinon',
+    'sinonChai': 'node_modules/sinon-chai/lib/sinon-chai' //MIGHT need this later
   }
-
-  // paths: {
-  //
-  //   /* test libs */
-  //   // 'test_sample': 'tests/test_sample'
-  // }
 });
 
-
-console.log('gonna setup mocha!');
-// mocha.setup('bdd')
-
-// require(['test_sample'], function(){
-require([], function(){
-
-    console.log('gonna summon mocha');
-    should = chai.should();
-
-    // mocha.run();
-});
-
-
+// can require needed test modules in the future here
+// require([], function() {
+    
 // });
