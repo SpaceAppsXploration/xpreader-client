@@ -3,16 +3,55 @@ define([
   'backbone',
   'handlebars',
   'models',
+  'text!../../templates/home.html',
+  'text!../../templates/about.html',
   'text!../../templates/article-main.html',
   'text!../../templates/article-list-item.html',
   'text!../../templates/article-pagination-box.html',
   'text!../../templates/article-filters.html',
   'handlebarsHelper'
   ],
-  function($, Backbone, Handlebars, models, articlesTemplate, articleListItemTemplate, articlePaginationBoxTemplate, articleFiltersTemplate) {
+  function($,
+           Backbone,
+           Handlebars,
+           models,
+           homeTemplate,
+           aboutTemplate,
+           articlesTemplate,
+           articleListItemTemplate,
+           articlePaginationBoxTemplate,
+           articleFiltersTemplate) {
     'use strict';
 
     // Views
+
+    var HomeView = Backbone.View.extend({
+      tagName: 'div',
+      className: 'home',
+      homeTemplate: homeTemplate,
+
+      render: function() {
+        var homeTemplate = Handlebars.compile(this.homeTemplate);
+
+        this.$el.html(homeTemplate());
+
+        return this;
+      }
+    });
+
+    var AboutView = Backbone.View.extend({
+      tagName: 'div',
+      className: 'about',
+      aboutTemplate: aboutTemplate,
+
+      render: function() {
+        var aboutTemplate = Handlebars.compile(this.aboutTemplate);
+
+        this.$el.html(aboutTemplate());
+
+        return this;
+      }
+    });
 
     var ArticleView = Backbone.View.extend({
       tagName: 'div',
@@ -126,6 +165,8 @@ define([
     // requirejs exports
     // works like module.exports in Nodejs
     return {
+      HomeView: HomeView,
+      AboutView: AboutView,
       ArticleView: ArticleView,
       ArticleFilterView: ArticleFilterView,
       ArticleListView: ArticleListView,
