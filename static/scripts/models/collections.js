@@ -12,7 +12,7 @@ define(['backbone',
     // Backbone is pre-configured to sync with a RESTful API.
     // Simply create a new Collection with the url of your resource endpoint
     url: function() {
-      return this.instanceUrl || 'http://hypermedia.projectchronos.eu/articles/v04/';
+      return this.instanceUrl || 'http://semantics.projectchronos.eu/';
     },
 
     initialize: function(props) {
