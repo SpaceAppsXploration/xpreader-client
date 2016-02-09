@@ -14,9 +14,8 @@ define(['backbone',
     },
 
     home: function() {
-      //$('.main-content').empty().append('<h1>Home Page</h1>');
       $('.main-content').empty()
-        .html(new views.HomeView().render().el)
+        .html(new views.HomeView().render().el);
     },
 
     articles: function() {
@@ -37,9 +36,8 @@ define(['backbone',
     },
 
     about: function() {
-      //$('.main-content').empty().append('<h1>About Project Chronos</h1>');
       $('.main-content').empty()
-        .html(new views.AboutView().render().el)
+        .html(new views.AboutView().render().el);
     }
   });
 
